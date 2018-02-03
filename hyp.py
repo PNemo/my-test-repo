@@ -1,5 +1,5 @@
 # this is a simple hypotenuse calculator
-# just testing the work of "math" library
+
 import math
 
 print('\t\t\tWelcome to the HypCalc!\t\t\t')
