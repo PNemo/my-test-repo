@@ -2,7 +2,7 @@
 # here we go!
 import random
 
-print('\t\t\tGreetings, traveller. Sit down and rest.\t\t\t')
+print('\t\t\tGreetings, traveller. Sit down and have some rest.\t\t\t')
 print('\t\t\tRelax with our simple, but really astonishing game!\t\t\t')
 
 num = random.randint(1, 100)
