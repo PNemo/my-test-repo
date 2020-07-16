@@ -13,3 +13,21 @@ for river in rivers.keys():
 
 for coun in rivers.values():
     print(f'\n{coun.title()}')
+
+
+plangs = {'clyde' : 'python', 
+        'jim' : 'c', 
+        'ibrahim' : 'java', 
+        'harry' : 'fasm', 
+        'lee' : 'c++'
+}
+
+people = ['clyde', 'peter', 'josh', 'jim', 
+        'ibrahim', 'erza', 'harry', 'lee'
+]
+
+for man in people:
+    if man in plangs.keys():
+        print(f'\nThanks for taking a poll, {man.title()}!')
+    else:
+        print(f'\nPlease take a poll, {man.title()}.')
