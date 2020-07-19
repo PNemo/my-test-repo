@@ -17,8 +17,8 @@ def show_new_messages(new_messages):
 message_pool = ['we love you', 'you will stand against everything', 'perserve and deliberate']
 new_messages = []
 
-print_msg_pool = messages(message_pool[:], new_messages)
-show_new_msg = show_new_messages(new_messages)
+messages(message_pool[:], new_messages)
+show_new_messages(new_messages)
 
 print(message_pool)
 print(new_messages)
