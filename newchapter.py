@@ -4,14 +4,6 @@ def make_pizza(size, *toppings):
     for topping in toppings:
         print(f"- {topping}")
 
-def make_sandwich(bread, *toppings):
-    """Creates a proper sandwich"""
-    print(f'\nMaking a sandwich with {bread} bread and these toppings:')
-    for topping in toppings:
-        print(f'> {topping.title()}')
-
-make_sandwich('white', 'mayonnaise')
-
 
 def build_profile(first, last, **user_info):
     """Build a dictionary containing everything we know about a user."""
@@ -36,3 +28,7 @@ def build_car(brand, body, **user_info):
 car = build_car('toyota', 'hatchback', color = 'blue', tow_package = True)
 
 print(car)
+
+from making_sandwiches import make_sandwich as ms
+
+ms('loaf', 'pepperoni', 'mayonnaise', 'eggs')
