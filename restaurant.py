@@ -1,29 +1,46 @@
-class Restaurant:
-    """Modelling restaurants."""
-    def __init__(self, name, cuisine):
-        """Initialize name and cuisine attributes."""
-        self.name = name
-        self.cuisine = cuisine
-    
+class Restaurant():
+    """A class representing a restaurant."""
+
+    def __init__(self, name, cuisine_type):
+        """Initialize the restaurant."""
+        self.name = name.title()
+        self.cuisine_type = cuisine_type
+        self.number_served = 0
+
     def describe_restaurant(self):
-        """Describing a restaurant."""
-        print(f"Welcome to the {self.name.title()} restaurant! We provide you {self.cuisine.title()} cuisine.")
-    
-    def res_open(self):
-        """Simulate opening a restautant."""
-        print(f"{self.name.title()} is open for customers and it's ready to fill you!")
-    
-res1 = Restaurant('manjomdo', 'korean')
-print(f'\nFood in the {res1.name.title()} restaurant with {res1.cuisine.title()} cuisine is absolutely gorgeous!')
-res1.describe_restaurant()
-res1.res_open()
+        """Display a summary of the restaurant."""
+        msg = f'{self.name} serves wonderful {self.cuisine_type.title()}.'
+        print("\n" + msg)
 
-res2 = Restaurant('hlek', 'ukrainian')
-print(f'\nFood in the {res2.name.title()} restaurant with {res2.cuisine.title()} cuisine is absolutely gorgeous!')
-res2.describe_restaurant()
-res2.res_open()
+    def open_restaurant(self):
+        """Display a message that the restaurant is open."""
+        print(f'{self.name.title()} is open. Come on in!')
 
-res3 = Restaurant('baba yetu', 'african')
-print(f'\nFood in the {res3.name.title()} restaurant with {res3.cuisine.title()} cuisine is absolutely gorgeous!')
-res3.describe_restaurant()
-res3.res_open()
+    def set_number_served(self, number_served):
+        """Allow user to set the number of customers that have been served."""
+        self.number_served = number_served
+
+    def increment_number_served(self, additional_served):
+        """Allow user to increment the number of customers served."""
+        self.number_served += additional_served
+
+class IceCreamStand(Restaurant):
+    """Represent an ice cream stand."""
+
+    def __init__(self, name, cuisine_type='ice cream'):
+        """Initialize an ice cream stand."""
+        super().__init__(name, cuisine_type)
+        self.flavors = []
+
+    def show_flavors(self):
+        """Display the flavors available."""
+        print("\nWe have the following flavors available:")
+        for flavor in self.flavors:
+            print("- " + flavor.title())
+
+
+big_one = IceCreamStand('The Big One')
+big_one.flavors = ['vanilla', 'chocolate', 'black cherry']
+
+big_one.describe_restaurant()
+big_one.show_flavors()

@@ -1,32 +1,70 @@
-class User:
-    """Modelling some users."""
-    def __init__(self, first_name, last_name, age, gender):
-        """Initializing attributes for user."""
-        self.first_name = first_name
-        self.last_name = last_name
-        self.age = age
-        self.gender = gender
-    
+class User():
+    """Represent a simple user profile."""
+
+    def __init__(self, first_name, last_name, username, email, location):
+        """Initialize the user."""
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.username = username
+        self.email = email
+        self.location = location.title()
+        self.login_attempts = 0
+
     def describe_user(self):
-        """Describing a user."""
-        if self.gender == 'male':
-            print(f"User's name is {self.first_name.title()} {self.last_name.title()}. He is {self.age} and his gender in {self.gender}.")
-        elif self.gender == 'female':
-            print(f"User's name is {self.first_name.title()} {self.last_name.title()}. She is {self.age} and her gender in {self.gender}.")
-        else:
-            print(f'Wrong gender, you should be male or female.')
+        """Display a summary of the user's information."""
+        print("\n" + self.first_name + " " + self.last_name)
+        print("  Username: " + self.username)
+        print("  Email: " + self.email)
+        print("  Location: " + self.location)
 
     def greet_user(self):
-        """Simulate user's greeting."""
-        print(f"How's it going, {self.first_name.title()}? We hope you will enjoy programming!")
+        """Display a personalized greeting to the user."""
+        print("\nWelcome back, " + self.username + "!")
 
-user1 = User('pavlo', 'prykhodko', 25, 'male')
+    def increment_login_attempts(self):
+        """Increment the value of login_attempts."""
+        self.login_attempts += 1
 
-print(f'\nUser {user1.first_name.title()} {user1.last_name.title()} aged {user1.age} is a {user1.gender}')
-user1.describe_user()
-user1.greet_user()
+    def reset_login_attempts(self):
+        """Reset login_attempts to 0."""
+        self.login_attempts = 0
 
-user2 = User('alina', 'punko', 19, 'female')
-print(f'\nUser {user2.first_name.title()} {user2.last_name.title()} aged {user2.age} is a {user2.gender}')
-user2.describe_user()
-user2.greet_user()
+
+class Admin(User):
+    """A user with administrative privileges."""
+
+    def __init__(self, first_name, last_name, username, email, location):
+        """Initialize the admin."""
+        super().__init__(first_name, last_name, username, email, location)
+
+        # Initialize an empty set of privileges.
+        self.privileges = Privileges()
+
+class Privileges():
+    """A class to store an admin's privileges."""
+
+    def __init__(self, privileges=[]):
+        self.privileges = privileges
+
+    def show_privileges(self):
+        print("\nPrivileges:")
+        if self.privileges:
+            for privilege in self.privileges:
+                print("- " + privilege)
+        else:
+            print("- This user has no privileges.")
+
+
+eric = Admin('eric', 'matthes', 'e_matthes', 'e_matthes@example.com', 'alaska')
+eric.describe_user()
+
+eric.privileges.show_privileges()
+
+print("\nAdding privileges...")
+eric_privileges = [
+    'can reset passwords',
+    'can moderate discussions',
+    'can suspend accounts',
+    ]
+eric.privileges.privileges = eric_privileges
+eric.privileges.show_privileges()
